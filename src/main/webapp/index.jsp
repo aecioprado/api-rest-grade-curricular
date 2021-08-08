@@ -10,11 +10,12 @@ body{background-color: lightblue};
 <title>Login</title>
 </head>
 <body>
-
+	
+	<!-- card form -->
 	<div id="card-central" style="display: flex; padding: 15px; align-items: center; justify-content: center; margin: 0 auto; background-color: white; width: 25%;">
 		<form action="LoginServlet" method="post">
 		<h1>Login</h1>
-			<p>Usuario: <br/><input type="text" name="usuario"></p> <!-- //name = receber o nome do parametro -->
+			<p>Usuario: <br/><input type="text" name="usuario"></p>
 			<p>Senha: <br/><input type="password" name="senha"></p>
 			<br /> 
 			<button type="submit" value="enviar">Enviar</button>

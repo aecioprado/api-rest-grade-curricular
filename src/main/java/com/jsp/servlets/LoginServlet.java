@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.jsp.entity.LoginEntity;
+import com.jsp.model.LoginModel;
 
-// Um servlet é um Controller
+//@WebServlet => @Controller
 @WebServlet("/LoginServlet") // mapeamento
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -20,14 +20,14 @@ public class LoginServlet extends HttpServlet {
 		super();
 	}
 
-	// recebe os dados pela url em parametros
+	// SERVLET -> GET
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	// recebe os dados enviados por um formulario
+	// recebe os dados enviados por um formulário
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -36,17 +36,34 @@ public class LoginServlet extends HttpServlet {
 		String usuario = (request.getParameter("usuario"));
 		String senha = (request.getParameter("senha"));
 
-		// Validação
-		// Verifica se os parametros não são nulos nem vazios
+		// Validação para fazer o post
+
+		// verifica se o login é valido
 		if (usuario != null && !usuario.isEmpty() && senha != null && !senha.isEmpty()) {
 
-			LoginEntity loginEntity = new LoginEntity();
-			loginEntity.setLogin(usuario);
-			loginEntity.setSenha(senha);
+			LoginModel loginModel = new LoginModel();
+			loginModel.setUsuario(usuario);
+			loginModel.setSenha(senha);
+
+			// caso seja valido, verifica se é usuario e senha - admin
+			if (loginModel.getUsuario().equalsIgnoreCase("admin") && loginModel.getSenha().equalsIgnoreCase("admin")) {
+
+				// cria session para o usuario
+				request.getSession().setAttribute("usuario", loginModel.getUsuario());
+
+				// redireciona para a pagina correta
+				RequestDispatcher redirecionar = request.getRequestDispatcher("principal/principal.jsp");
+				redirecionar.forward(request, response);
+
+			} else {
+				RequestDispatcher redirecionar = request.getRequestDispatcher("index.jsp");
+				request.setAttribute("mensagem", "Usuario e/ou senha estão incorretos.");
+				redirecionar.forward(request, response);
+			}
 
 		} else {
 			RequestDispatcher redirecionar = request.getRequestDispatcher("index.jsp");
-			request.setAttribute("mensagem", "Informe usuario e senha corretamente");
+			request.setAttribute("mensagem", "Usuario e/ou senha estão em branco.");
 			redirecionar.forward(request, response);
 		}
 

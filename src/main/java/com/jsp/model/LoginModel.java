@@ -1,25 +1,25 @@
-package com.jsp.entity;
+package com.jsp.model;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-public class LoginEntity implements Serializable { // troca de dados cliente/servidor
+public class LoginModel implements Serializable { // troca de dados cliente/servidor
 
 	private static final long serialVersionUID = 2025114601657262972L;
 
-	private String login;
+	private String usuario;
 	private String senha;
 
-	public LoginEntity() {
+	public LoginModel() {
 
 	}
 
-	public String getLogin() {
-		return login;
+	public String getUsuario() {
+		return usuario;
 	}
 
-	public void setLogin(String login) {
-		this.login = login;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getSenha() {
@@ -32,7 +32,7 @@ public class LoginEntity implements Serializable { // troca de dados cliente/ser
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(login, senha);
+		return Objects.hash(usuario, senha);
 	}
 
 	@Override
@@ -43,8 +43,8 @@ public class LoginEntity implements Serializable { // troca de dados cliente/ser
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		LoginEntity other = (LoginEntity) obj;
-		return Objects.equals(login, other.login) && Objects.equals(senha, other.senha);
+		LoginModel other = (LoginModel) obj;
+		return Objects.equals(usuario, other.usuario) && Objects.equals(senha, other.senha);
 	}
 
 }
