@@ -15,6 +15,7 @@ body{background-color: lightblue};
 	<div id="card-central" style="display: flex; padding: 15px; align-items: center; justify-content: center; margin: 0 auto; background-color: white; width: 25%;">
 		<form action="LoginServlet" method="post">
 		<h1>Login</h1>
+			<input type="hidden" value="<%= request.getParameter("url") %>" name="url">
 			<p>Usuario: <br/><input type="text" name="usuario"></p>
 			<p>Senha: <br/><input type="password" name="senha"></p>
 			<br /> 

@@ -33,8 +33,9 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		doGet(request, response);
 
-		String usuario = (request.getParameter("usuario"));
-		String senha = (request.getParameter("senha"));
+		String usuario = request.getParameter("usuario");
+		String senha = request.getParameter("senha");
+		String url = request.getParameter("url");
 
 		// Validação para fazer o post
 
@@ -51,12 +52,17 @@ public class LoginServlet extends HttpServlet {
 				// cria session para o usuario
 				request.getSession().setAttribute("usuario", loginModel.getUsuario());
 
+				// valida redirecionamento
+				if (url == null || url.equals("null")) {
+					url = "principal/principal.jsp";
+				}
+
 				// redireciona para a pagina correta
-				RequestDispatcher redirecionar = request.getRequestDispatcher("principal/principal.jsp");
+				RequestDispatcher redirecionar = request.getRequestDispatcher(url);
 				redirecionar.forward(request, response);
 
 			} else {
-				RequestDispatcher redirecionar = request.getRequestDispatcher("index.jsp");
+				RequestDispatcher redirecionar = request.getRequestDispatcher("/index.jsp");
 				request.setAttribute("mensagem", "Usuario e/ou senha estão incorretos.");
 				redirecionar.forward(request, response);
 			}
