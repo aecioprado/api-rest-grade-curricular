@@ -32,7 +32,8 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
-
+		
+		// recebem valores passados pelo form
 		String usuario = request.getParameter("usuario");
 		String senha = request.getParameter("senha");
 		String url = request.getParameter("url");
