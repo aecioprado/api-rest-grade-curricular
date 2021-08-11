@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 
 public class SingleConnectionDb {
 
-	private static String dbUrl = "jdbc:postgresql://localhost:5432/jsp_login_crud?"; // !!!!!
+	private static String dbUrl = "jdbc:postgresql://localhost:5432/jsp_login_crud?autoReconnect=true"; // !!!!!
 	private static String user = "postgres";
 	private static String pwd = "admin123";
 	private static Connection connection = null;

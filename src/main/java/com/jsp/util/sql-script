@@ -1,0 +1,33 @@
+CREATE DATABASE jsp_login_crud
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Portuguese_Brazil.1252'
+    LC_CTYPE = 'Portuguese_Brazil.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+
+##
+
+CREATE TABLE public.login_model
+(
+    usuario character varying(200) COLLATE pg_catalog."default",
+    senha character varying(200) COLLATE pg_catalog."default",
+    CONSTRAINT usuario_unique UNIQUE (usuario)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.login_model
+    OWNER to postgres;
+
+
+### 
+
+INSERT INTO public.login_model(
+	usuario, senha)
+	VALUES ('admin', 'admin');
+
+    
