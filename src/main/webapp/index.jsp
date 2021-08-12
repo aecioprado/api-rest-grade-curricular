@@ -16,7 +16,7 @@ body{background-color: lightblue};
 		<form action="LoginServlet" method="post">
 		<h1>Login</h1>
 			<input type="hidden" value="<%= request.getParameter("url") %>" name="url">
-			<p>Usuario: <br/><input type="text" name="usuario"></p>
+			<p>Usuario: <br/><input type="text" name="username"></p>
 			<p>Senha: <br/><input type="password" name="senha"></p>
 			<br /> 
 			<button type="submit" value="enviar">Enviar</button>

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jsp.dao.LoginDAO;
-import com.jsp.model.LoginModel;
+import com.jsp.model.UsuarioBean;
 
 //@WebServlet => @Controller
 @WebServlet("/LoginServlet") // mapeamento
@@ -36,26 +36,27 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		doGet(request, response);
 
-		// recebem valores passados pelo form
-		String usuario = request.getParameter("usuario");
+		// recebem os valores passados pelo formulário
+		String username = request.getParameter("username");
 		String senha = request.getParameter("senha");
 		String url = request.getParameter("url");
-
-		// Validação para fazer o post
-
+		
 		// verifica se o login é valido
 		try {
-			if (usuario != null && !usuario.isEmpty() && senha != null && !senha.isEmpty()) {
-
-				LoginModel loginModel = new LoginModel();
-				loginModel.setUsuario(usuario);
-				loginModel.setSenha(senha);
+			if (username != null && !username.isEmpty() && senha != null && !senha.isEmpty()) {
+				
+				// cria um novo objeto do tipo LoginModel
+				UsuarioBean usuario = new UsuarioBean();
+				// seta usuário passado pela formulário
+				usuario.setUsername(username);
+				// seta senha passada pelo formulário
+				usuario.setSenha(senha);
 
 				// caso seja valido, verifica se é usuario e senha - admin
-				if (loginDAO.validarAutenticacao(loginModel)) {
+				if (loginDAO.validarAutenticacao(usuario)) {
 
 					// cria session para o usuario
-					request.getSession().setAttribute("usuario", loginModel.getUsuario());
+					request.getSession().setAttribute("usuario", usuario.getUsername());
 
 					// valida redirecionamento
 					if (url == null || url.equals("null")) {

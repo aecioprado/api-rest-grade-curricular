@@ -14,7 +14,11 @@ body {
 </head>
 <body>
 
-	<h1>Tela principal após o login</h1>
+	<h1>Página Principal</h1>
+	<br/>
+	<br/>
+	<%= session.getAttribute("username") %>
+	<a ref="">Listar Usuários</a> | <a href=""></a>
 
 </body>
 </html>
