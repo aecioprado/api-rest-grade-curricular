@@ -11,104 +11,11 @@ public class UsuarioBean implements Serializable{
 	private String username;
 	private String email;
 	private String senha;
-	private String confirmaSenha;
+
 	
 	public UsuarioBean() {
 		
 	}
-	
-	
-	
-	public UsuarioBean(String nome, String username, String email, String senha, String confirmaSenha) {
-		this.nome = nome;
-		this.username = username;
-		this.email = email;
-		this.senha = senha;
-		this.confirmaSenha = confirmaSenha;
-	}
-
-
-
-	public Boolean validaSenha(String senha, String confirmaSenha) {
-		this.senha = senha;
-		this.confirmaSenha = confirmaSenha;
-		
-		if(senha.equalsIgnoreCase(confirmaSenha)) {
-			return true;
-		}
-		 return false;
-	}
-	
-	public Boolean validaLogin(String username, String senha) {
-		this.username = username;
-		this.senha = senha;
-		
-		if(username.equalsIgnoreCase(senha)) {
-			return true;
-		}
-		return false;
-	}
-
-
-
-	public String getNome() {
-		return nome;
-	}
-
-
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-
-
-	public String getUsername() {
-		return username;
-	}
-
-
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-
-
-	public String getEmail() {
-		return email;
-	}
-
-
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-
-
-	public String getSenha() {
-		return senha;
-	}
-
-
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
-
-
-	public String getConfirmaSenha() {
-		return confirmaSenha;
-	}
-
-
-
-	public void setConfirmaSenha(String confirmaSenha) {
-		this.confirmaSenha = confirmaSenha;
-	}
-
 
 
 	public Long getId() {
@@ -116,12 +23,55 @@ public class UsuarioBean implements Serializable{
 	}
 
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+	public String getNome() {
+		return nome;
+	}
+
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+	public String getUsername() {
+		return username;
+	}
+
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public String getSenha() {
+		return senha;
+	}
+
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(confirmaSenha, email, id, nome, senha, username);
+		return Objects.hash(email, id, nome, senha, username);
 	}
-
 
 
 	@Override
@@ -133,18 +83,10 @@ public class UsuarioBean implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		UsuarioBean other = (UsuarioBean) obj;
-		return Objects.equals(confirmaSenha, other.confirmaSenha) && Objects.equals(email, other.email)
-				&& Objects.equals(id, other.id) && Objects.equals(nome, other.nome)
+		return Objects.equals(email, other.email) && Objects.equals(id, other.id) && Objects.equals(nome, other.nome)
 				&& Objects.equals(senha, other.senha) && Objects.equals(username, other.username);
 	}
-
-
-
-	@Override
-	public String toString() {
-		return "UsuarioBean [id=" + id + ", nome=" + nome + ", username=" + username + ", email=" + email + ", senha="
-				+ senha + ", confirmaSenha=" + confirmaSenha + "]";
-	}
+	
 	
 	
 	

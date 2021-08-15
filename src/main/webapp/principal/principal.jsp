@@ -34,43 +34,52 @@
 	</header>
 
 <br/>
-<br/>
-	<div class="container" style="width: 400px;">
+	<div class="container" style="width: 450px;">
 	<div class="card" class="card border border-primary" style="background-color: rgb(229, 242, 251); padding: 10px;">
-		<form action="UsuarioControllerServlet" method="post">
+		
+		<!-- Envia(Post) os dados para o UsuarioControllerServlet -->
+		<form action="<%=request.getContextPath() %>/UsuarioControllerServlet" method="post">
 			<h2 class="card-title text-center">Cadastro de usuário</h2>
 			
 			<div class="form-group">
 			<label>Id:</label><br/>
-			<input type="text" class="form-control" name="id">
+			<input type="text" class="form-control" name="id" id="id" readonly="readonly">
 			</div>
 			
 			<div class="form-group">
 			<label>Nome:</label><br/>
-			<input type="text" class="form-control" name="nome">
+			<input type="text" class="form-control" name="nome" id="nome" autocomplete="off" required="required">
 			</div>
 			
 			<div class="form-group">
 			<label>Username:</label><br/>
-			<input type="text" class="form-control" name="username">
+			<input type="text" class="form-control" name="username" id="username" autocomplete="off" required="required">
 			</div>
 			
 			<div class="form-group">
 			<label>E-mail:</label><br/>
-			<input type="text" class="form-control" name="email">
+			<input type="text" class="form-control" name="email" id="email" autocomplete="off" required="required">
+			</div>
+			
+			<div class="form-group">
+			<label>Senha:</label><br/>
+			<input type="password" class="form-control" name="senha" id="senha" autocomplete="off" required="required">
 			</div>
 			
 
 			<button type="submit" class="btn btn-login btn-success"
+				value="novo">Novo</button>
+				
+			<button type="submit" class="btn btn-login btn-success"
 				value="salvar">Salvar</button>
 			
-			<button type="submit" class="btn btn-login btn-primary"
+			<button type="submit" class="btn btn-login btn-success"
 				value="editar">Editar</button>
 			
 			<button type="submit" class="btn btn-login btn-danger"
 				value="deletar">Deletar</button>
 			
-			<button type="reset" class="btn btn-login btn-primary"
+			<button type="reset" class="btn btn-login btn-success"
 				value="salvar">Limpar</button>
 		</form>
 		</div>

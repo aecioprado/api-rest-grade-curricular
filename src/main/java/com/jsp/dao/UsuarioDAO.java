@@ -23,6 +23,8 @@ public class UsuarioDAO {
 		ps.setString(2, usuario.getUsername());
 		ps.setString(3, usuario.getEmail());
 		ps.setString(4, usuario.getSenha());
+		
+		ps.execute();
 		connection.commit();
 		} catch(Exception e) {
 			e.printStackTrace();

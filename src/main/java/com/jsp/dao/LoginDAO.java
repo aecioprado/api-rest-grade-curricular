@@ -18,7 +18,7 @@ public class LoginDAO {
 
 	public boolean validarAutenticacao(UsuarioBean usuario) throws SQLException {
 
-		String sql = "select * from usuarios where usuario= ? and senha = ?";
+		String sql = "select * from usuarios where username= ? and senha = ?";
 		PreparedStatement ps = connection.prepareStatement(sql);
 		ps.setString(1, usuario.getUsername());
 		ps.setString(2, usuario.getSenha());
