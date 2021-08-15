@@ -1,30 +1,53 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="utf-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-body{background-color: lightblue};
-</style>
-<meta charset="ISO-8859-1">
-<title>Login</title>
-</head>
-<body>
 	
-	<!-- card form -->
-	<div id="card-central" style="display: flex; padding: 15px; align-items: center; justify-content: center; margin: 0 auto; background-color: white; width: 25%;">
-		<form action="LoginServlet" method="post">
-		<h1>Login</h1>
-			<input type="hidden" value="<%= request.getParameter("url") %>" name="url">
-			<p>Usuario: <br/><input type="text" name="username"></p>
-			<p>Senha: <br/><input type="password" name="senha"></p>
-			<br /> 
-			<button type="submit" value="enviar">Enviar</button>
-			<button type="reset">Limpar</button>
-			<br/>
-			<p>${mensagem}</p>
-		</form>
-	</div>
+	<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- chamada do css -->
+    <link rel="stylesheet" href="resources/css/bootstrap.css">
+    <!-- chamada do js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="resources/jquery/jquery-3.6.0.js"></script>
+    <script src="resources/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <br><br><br>
+
+    <div class="container" id="login-form"  style="width: 350px;">
+
+        <div class="card border border-primary" style="background-color: rgb(229, 242, 251); padding: 10px;"> 
+            <!--form-->
+            <form action="<%= request.getContextPath() %>/LoginServlet" method="post">
+                <h2 class="card-title text-center">Login</h2>
+                <div class="form-group">
+                    <input type="hidden" value="<%= request.getParameter("url") %>" name="url">
+                    <input type="text" class="form-control" name="username" placeholder="usuário">
+                </div>
+
+                <div class="form-group">
+                    
+                    <input type="password" class="form-control" name="senha" placeholder="senha">
+                </div>
+
+                <button type="submit" class="btn btn-login btn-primary" value="enviar">Login</button>
+                <br>
+                <a href="#" title="Registre-se">Registre-se</a>
+                <br>
+                <a href="#" title="Perdeu a senha">Recuperar senha</a>
+            </form>
+            <!--form -->
+        </div>
+
+    </div>
+
 
 </body>
+
 </html>

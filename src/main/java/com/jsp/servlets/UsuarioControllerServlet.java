@@ -1,11 +1,14 @@
 package com.jsp.servlets;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.jsp.dao.UsuarioDAO;
 
 @WebServlet("/UsuarioControllerServlet")
 public class UsuarioControllerServlet extends HttpServlet {
@@ -24,9 +27,14 @@ public class UsuarioControllerServlet extends HttpServlet {
 		
 		String id = request.getParameter("id");
 		String nome = request.getParameter("nome");
+		String username = request.getParameter("username");
 		String email = request.getParameter("email");
 		String senha = request.getParameter("senha");
-		String telefone = request.getParameter("telefone");
+		 
+		//Montar um novo objeto usuário
+		//private UsuarioBean usuarioBean = new UsuarioBean();
+		//usuarioBean.setId
+		
 		
 	}
 

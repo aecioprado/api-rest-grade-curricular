@@ -27,7 +27,17 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		String acao = request.getParameter("acao");
+
+		if (acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("logout")) {
+			request.getSession().invalidate();
+			RequestDispatcher redirecionar = request.getRequestDispatcher("index.jsp");
+			redirecionar.forward(request, response);
+
+		} else {
+			//doPost(request, response);
+		}
 	}
 
 	// recebe os dados enviados por um formulário
@@ -40,11 +50,11 @@ public class LoginServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String senha = request.getParameter("senha");
 		String url = request.getParameter("url");
-		
+
 		// verifica se o login é valido
 		try {
 			if (username != null && !username.isEmpty() && senha != null && !senha.isEmpty()) {
-				
+
 				// cria um novo objeto do tipo LoginModel
 				UsuarioBean usuario = new UsuarioBean();
 				// seta usuário passado pela formulário

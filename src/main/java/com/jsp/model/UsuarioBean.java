@@ -12,9 +12,6 @@ public class UsuarioBean implements Serializable{
 	private String email;
 	private String senha;
 	private String confirmaSenha;
-	// private List<TelefoneBean> telefones;
-	// implementar na versao 2.0
-	// private Boolean admin = false;
 	
 	public UsuarioBean() {
 		

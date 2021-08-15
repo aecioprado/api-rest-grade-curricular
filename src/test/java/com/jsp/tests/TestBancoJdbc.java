@@ -10,6 +10,7 @@ public class TestBancoJdbc {
 	public void initBanco() {
 		
 		SingleConnectionDb.getConnection();
+		System.out.println("funcionou.");
 	}
 
 }
