@@ -20,7 +20,7 @@ import com.jsp.util.SingleConnectionDb;
 // intercepta todas as requisicoes que passam pela(s) url(s) definidas(s).
 // index não passa pela filtro
 // considere "principal" = "home"
-@WebFilter(urlPatterns = { "/principal/*" })
+@WebFilter(urlPatterns = { "/outra/*" })
 public class FilterAutenticacao implements Filter {
 	
 	public static Connection connection;

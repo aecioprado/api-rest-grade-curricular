@@ -23,28 +23,32 @@ public class LoginServlet extends HttpServlet {
 		super();
 	}
 
-	// SERVLET -> GET
+	// Recebe parametros via URL
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
+		//Recebe um parametro "acao" enviado pela request através da url
 		String acao = request.getParameter("acao");
 
 		if (acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("logout")) {
+			
+			// Invalida a sessão
 			request.getSession().invalidate();
+			
+			// Redireciona a request
 			RequestDispatcher redirecionar = request.getRequestDispatcher("index.jsp");
 			redirecionar.forward(request, response);
 
 		} else {
-			//doPost(request, response);
+			doPost(request, response);
 		}
 	}
 
-	// recebe os dados enviados por um formulário
+	// Recebe os dados enviados por um formulário
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doGet(request, response);
 
 		// recebem os valores passados pelo formulário
 		String username = request.getParameter("username");
@@ -62,15 +66,15 @@ public class LoginServlet extends HttpServlet {
 				// seta senha passada pelo formulário
 				usuario.setSenha(senha);
 
-				// caso seja valido, verifica se é usuario e senha - admin
+				// Verifica se a validação é verdadeira
 				if (loginDAO.validarAutenticacao(usuario)) {
 
-					// cria session para o usuario
+					// cria session para o usuario logado
 					request.getSession().setAttribute("usuario", usuario.getUsername());
 
 					// valida redirecionamento
 					if (url == null || url.equals("null")) {
-						url = "principal/principal.jsp";
+						url = "principal/mostrarUsuarios.jsp";
 					}
 
 					// redireciona para a pagina correta

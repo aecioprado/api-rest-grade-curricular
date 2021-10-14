@@ -16,6 +16,19 @@ public class UsuarioBean implements Serializable{
 	public UsuarioBean() {
 		
 	}
+	
+	
+
+
+	public UsuarioBean(Long id, String nome, String username, String email, String senha) {
+		this.id = id;
+		this.nome = nome;
+		this.username = username;
+		this.email = email;
+		this.senha = senha;
+	}
+
+
 
 
 	public Long getId() {

@@ -1,41 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	
-<!DOCTYPE html>
-<html>
-<head>
+    pageEncoding="ISO-8859-1"%>
 
-<meta charset="ISO-8859-1">
-<title>Principal</title>
-
-<script
-	src="<%=request.getContextPath()%>/resources/jquery/jquery-3.6.0.js"></script>
-<!-- chamada do css -->
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/bootstrap.css">
-<!-- chamada do js -->
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-	crossorigin="anonymous"></script>
-
-<script
-	src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
-</head>
-<body>
-	<!-- tag semantica HEADER-->
-	<jsp:include page="include-navbar.jsp"></jsp:include>
-
-	
-	<br />
+	<!-- Formulario Usuario -->
 	<div class="container" style="width: 450px;">
 		<div class="card" class="card border border-primary"
 			style="background-color: rgb(229, 242, 251); padding: 10px;">
+			
+			
 
 			<!-- Envia(Post) os dados para o UsuarioControllerServlet -->
 			<form action="<%=request.getContextPath()%>/UsuarioControllerServlet" method="post" id="form-usuarios">
-				<h2 class="card-title text-center">Cadastro de usuÃ¡rio</h2>
+				<h2 class="card-title text-left">Formulário de usuário:</h2>
+				
+				<span>${mensagem}</span><br/>
 
 				<div class="form-group">
 					<label>Id:</label><br /> <input type="text" class="form-control"
@@ -69,34 +46,21 @@
 
 				<button type="submit" class="btn btn-login btn-success"
 					value="salvar">Salvar</button>
+					
+				<button type="submit" class="btn btn-login btn-success"
+					value="salvar">Editar</button>
+					
+				<button type="submit" class="btn btn-login btn-success"
+					value="salvar">Excluir</button>
 
 				<button type="button" class="btn btn-login btn-success" value="novo"
-					onclick="limparFormulario();">Novo</button>
+					onclick="limparFormulario();">Limpar</button>
+				
+				<button type="button" class="btn btn-login btn-success" value="novo"
+					onclick="limparFormulario();">Cancelar</button>
 
-				<!-- Button trigger modal -->
-				<button type="button" class="btn btn-login btn-success"
-					data-toggle="modal" data-target="#modal-pesquisar">Pesquisar</button>
-				<br /> <span>${mensagem}</span>
 
 			</form>
-
-			<!-- Lista de usuÃ¡rios -->
-			
-			
-
-			<br/>
-			
-	
-
-	<script>
-		function limparFormulario() {
-			var campos = document.getElementById("form-usuarios").elements;
-
-			for (i = 0; i < campos.length; i++) {
-				campos[i].value = "";
-			}
-		}
-	</script>
-
-</body>
-</html>
+		</div>	
+		</div>
+			<!-- Formulario Usuario -->

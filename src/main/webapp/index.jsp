@@ -27,6 +27,7 @@
             <form action="<%= request.getContextPath() %>/LoginServlet" method="post">
                 <h2 class="card-title text-center">Login</h2>
                 <div class="form-group">
+                	<!-- parametro url -->
                     <input type="hidden" value="<%= request.getParameter("url") %>" name="url">
                     <input type="text" class="form-control" name="username" placeholder="usuário">
                 </div>
@@ -35,12 +36,15 @@
                     
                     <input type="password" class="form-control" name="senha" placeholder="senha">
                 </div>
+                
+                <span>${mensagem}</span>
+                <br/>
 
                 <button type="submit" class="btn btn-login btn-primary" value="enviar">Login</button>
                 <br>
-                <a href="#" title="Registre-se">Registre-se</a>
+                <a href="<%= request.getContextPath() %>/registrodeusuario.jsp" title="Registre-se">Registre-se</a>
                 <br>
-                <a href="#" title="Perdeu a senha">Recuperar senha</a>
+                <a href="" title="Perdeu a senha">Recuperar senha</a>
             </form>
             <!--form -->
         </div>
