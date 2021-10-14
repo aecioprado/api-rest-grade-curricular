@@ -1,2 +1,3 @@
-# api-rest-grade-curricular
-Microsserviço api rest para manutenção de matrículas. Projeto do módulo java back-end da Rasmoo.
+# jsp-login-crud-bootstrap
+
+Projeto em jsp de sistema de login e crud de usuários
